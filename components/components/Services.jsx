@@ -38,13 +38,11 @@ export default function Services() {
       className="relative overflow-hidden bg-white py-28"
     >
       {/* Background glow */}
-      <div className="absolute right-[-180px] top-1/4 h-[450px] w-[450px] rounded-full bg-blue-500/[0.06] blur-[130px]" />
+      <div className="pointer-events-none absolute right-[-160px] top-1/4 h-[360px] w-[360px] rounded-full bg-blue-500/[0.04] blur-[100px] lg:h-[450px] lg:w-[450px] lg:blur-[120px]" />
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-
         {/* Header */}
         <div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
-
           <div className="max-w-2xl">
             <p className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.25em] text-blue-600">
               <span className="h-px w-8 bg-blue-600" />
@@ -67,15 +65,20 @@ export default function Services() {
         </div>
 
         {/* Services Grid */}
-        <div className="mt-14 grid overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-[0_20px_60px_rgba(15,23,42,0.05)] md:grid-cols-2 lg:grid-cols-3">
-
-          {services.map((service) => (
+        <div className="mt-14 grid overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-[0_15px_45px_rgba(15,23,42,0.04)] md:grid-cols-2 lg:grid-cols-3">
+          {services.map((service, index) => (
             <a
               key={service.number}
               href={`/services/${service.title
                 .toLowerCase()
                 .replaceAll(" ", "-")}`}
-              className="group relative min-h-[280px] border-b border-slate-200 bg-white p-8 transition-all duration-500 hover:bg-slate-50 lg:min-h-[300px]"
+              className={`group relative min-h-[280px] bg-white p-8 transition-colors duration-300 hover:bg-slate-50 lg:min-h-[300px] ${
+                index < 3 ? "border-b border-slate-200" : ""
+              } ${
+                index % 3 !== 2 ? "lg:border-r lg:border-slate-200" : ""
+              } ${
+                index >= 3 ? "md:border-b-0" : ""
+              }`}
             >
               {/* Number + Arrow */}
               <div className="flex items-center justify-between">
@@ -83,7 +86,7 @@ export default function Services() {
                   {service.number}
                 </span>
 
-                <span className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white text-sm text-slate-400 transition duration-300 group-hover:border-blue-200 group-hover:bg-blue-50 group-hover:text-blue-600">
+                <span className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white text-sm text-slate-400 transition-colors duration-300 group-hover:border-blue-200 group-hover:bg-blue-50 group-hover:text-blue-600">
                   ↗
                 </span>
               </div>
@@ -108,10 +111,9 @@ export default function Services() {
               </div>
 
               {/* Hover line */}
-              <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-blue-600 transition-all duration-500 group-hover:w-full" />
+              <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-blue-600 transition-[width] duration-300 group-hover:w-full" />
             </a>
           ))}
-
         </div>
 
         {/* Bottom CTA */}
@@ -128,16 +130,15 @@ export default function Services() {
 
           <a
             href="#appointment"
-            className="group inline-flex shrink-0 items-center gap-3 rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white transition duration-300 hover:bg-blue-700"
+            className="group inline-flex shrink-0 items-center gap-3 rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white transition-colors duration-300 hover:bg-blue-700"
           >
             Book Consultation
 
-            <span className="transition-transform group-hover:translate-x-1">
+            <span className="transition-transform duration-300 group-hover:translate-x-1">
               →
             </span>
           </a>
         </div>
-
       </div>
     </section>
   );

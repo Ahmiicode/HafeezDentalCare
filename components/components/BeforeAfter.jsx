@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const cases = [
   {
     image: "/images/image2.jpeg",
@@ -20,10 +22,9 @@ export default function BeforeAfter() {
       className="relative overflow-hidden bg-white py-24 md:py-32"
     >
       {/* Background Glow */}
-      <div className="pointer-events-none absolute left-1/2 top-20 h-72 w-72 -translate-x-1/2 rounded-full bg-blue-500/[0.06] blur-[120px]" />
+      <div className="pointer-events-none absolute left-1/2 top-20 h-64 w-64 -translate-x-1/2 rounded-full bg-blue-500/[0.04] blur-[90px] md:h-72 md:w-72 md:blur-[110px]" />
 
       <div className="relative mx-auto max-w-7xl px-6">
-
         {/* Section Header */}
         <div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
           <div>
@@ -43,8 +44,8 @@ export default function BeforeAfter() {
           </div>
 
           <p className="max-w-md text-sm leading-7 text-slate-600 md:text-base">
-            Explore selected dental cases and transformations from
-            Hafeez Dental Care.
+            Explore selected dental cases and transformations from Hafeez
+            Dental Care.
           </p>
         </div>
 
@@ -53,21 +54,23 @@ export default function BeforeAfter() {
           {cases.map((item, index) => (
             <article
               key={item.image}
-              className="group overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-[0_15px_50px_rgba(15,23,42,0.06)] transition-all duration-500 hover:-translate-y-1 hover:border-blue-200 hover:shadow-[0_20px_60px_rgba(37,99,235,0.10)]"
+              className="group overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-[0_12px_40px_rgba(15,23,42,0.05)] transition-transform duration-300 hover:-translate-y-1"
             >
               {/* Image */}
               <div className="relative h-[320px] overflow-hidden bg-slate-100 sm:h-[360px] md:h-[400px]">
-                <img
+                <Image
                   src={item.image}
                   alt={`${item.title} - Before and After`}
-                  className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-[1.02]"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover object-center transition-transform duration-500 group-hover:scale-[1.02]"
                 />
 
                 {/* Soft Image Overlay */}
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/15 via-transparent to-transparent" />
 
                 {/* Case Badge */}
-                <div className="absolute right-5 top-5 rounded-full border border-white/60 bg-white/90 px-4 py-2 text-[11px] font-semibold tracking-[0.2em] text-[#07152d] shadow-sm backdrop-blur-md">
+                <div className="absolute right-5 top-5 rounded-full border border-white/60 bg-white/90 px-4 py-2 text-[11px] font-semibold tracking-[0.2em] text-[#07152d] shadow-sm backdrop-blur-sm">
                   CASE {String(index + 1).padStart(2, "0")}
                 </div>
               </div>
@@ -86,7 +89,7 @@ export default function BeforeAfter() {
                   </div>
 
                   {/* Arrow */}
-                  <div className="hidden h-11 w-11 shrink-0 items-center justify-center rounded-full border border-blue-100 bg-blue-50 text-blue-600 transition-all duration-300 group-hover:translate-x-1 group-hover:bg-blue-600 group-hover:text-white sm:flex">
+                  <div className="hidden h-11 w-11 shrink-0 items-center justify-center rounded-full border border-blue-100 bg-blue-50 text-blue-600 transition-transform duration-300 group-hover:translate-x-1 sm:flex">
                     <svg
                       width="18"
                       height="18"
@@ -94,6 +97,7 @@ export default function BeforeAfter() {
                       fill="none"
                       stroke="currentColor"
                       strokeWidth="1.7"
+                      aria-hidden="true"
                     >
                       <path d="M5 12h14" />
                       <path d="m13 6 6 6-6 6" />
@@ -121,7 +125,6 @@ export default function BeforeAfter() {
             treatment plans.
           </p>
         </div>
-
       </div>
     </section>
   );
