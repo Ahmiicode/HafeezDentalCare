@@ -1,33 +1,30 @@
+
+import Link from "next/link";
+
 const services = [
   {
     number: "01",
     title: "Dental Implants",
+    slug: "dental-implants",
     text: "Natural-looking tooth replacement designed for strength, function, and confidence.",
   },
   {
     number: "02",
     title: "Root Canal",
+    slug: "root-canal",
     text: "Comfort-focused treatment to protect your natural tooth and restore its function.",
   },
   {
     number: "03",
-    title: "Glass Fillings",
-    text: "Tooth-colored fillings designed to restore damaged teeth while maintaining a natural look.",
-  },
-  {
-    number: "04",
     title: "Teeth Whitening",
+    slug: "teeth-whitening",
     text: "Professional whitening care to help you achieve a brighter, cleaner-looking smile.",
   },
   {
-    number: "05",
+    number: "04",
     title: "Dental Crowns",
+    slug: "dental-crowns",
     text: "Strong, aesthetic crowns that help restore damaged or weakened teeth.",
-  },
-  {
-    number: "06",
-    title: "Cosmetic Dentistry",
-    text: "Personalized treatments focused on improving the appearance of your smile.",
   },
 ];
 
@@ -41,8 +38,10 @@ export default function Services() {
       <div className="pointer-events-none absolute right-[-160px] top-1/4 h-[360px] w-[360px] rounded-full bg-blue-500/[0.04] blur-[100px] lg:h-[450px] lg:w-[450px] lg:blur-[120px]" />
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
+
         {/* Header */}
         <div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
+
           <div className="max-w-2xl">
             <p className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.25em] text-blue-600">
               <span className="h-px w-8 bg-blue-600" />
@@ -65,21 +64,21 @@ export default function Services() {
         </div>
 
         {/* Services Grid */}
-        <div className="mt-14 grid overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-[0_15px_45px_rgba(15,23,42,0.04)] md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-14 grid overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-[0_15px_45px_rgba(15,23,42,0.04)] md:grid-cols-2">
+
           {services.map((service, index) => (
-            <a
+            <Link
               key={service.number}
-              href={`/services/${service.title
-                .toLowerCase()
-                .replaceAll(" ", "-")}`}
-              className={`group relative min-h-[280px] bg-white p-8 transition-colors duration-300 hover:bg-slate-50 lg:min-h-[300px] ${
-                index < 3 ? "border-b border-slate-200" : ""
+              href={`/services/${service.slug}`}
+              className={`group relative min-h-[260px] bg-white p-8 transition-colors duration-300 hover:bg-slate-50 md:min-h-[300px] ${
+                index < 2 ? "border-b border-slate-200" : ""
               } ${
-                index % 3 !== 2 ? "lg:border-r lg:border-slate-200" : ""
-              } ${
-                index >= 3 ? "md:border-b-0" : ""
+                index % 2 === 0
+                  ? "md:border-r md:border-slate-200"
+                  : ""
               }`}
             >
+
               {/* Number + Arrow */}
               <div className="flex items-center justify-between">
                 <span className="text-xs font-semibold tracking-[0.2em] text-blue-600">
@@ -92,7 +91,7 @@ export default function Services() {
               </div>
 
               {/* Title */}
-              <h3 className="mt-12 text-2xl font-semibold tracking-tight text-[#07152d] transition-colors duration-300 group-hover:text-blue-600">
+              <h3 className="mt-10 text-2xl font-semibold tracking-tight text-[#07152d] transition-colors duration-300 group-hover:text-blue-600 sm:mt-12">
                 {service.title}
               </h3>
 
@@ -101,8 +100,15 @@ export default function Services() {
                 {service.text}
               </p>
 
-              {/* Bottom link */}
-              <div className="absolute bottom-8 left-8 flex items-center gap-2 text-sm font-medium text-blue-600">
+              {/* Learn More */}
+              <div
+                className="
+                  mt-6
+                  flex items-center gap-2
+                  text-sm font-medium text-blue-600
+                  md:absolute md:bottom-8 md:left-8 md:mt-0
+                "
+              >
                 <span>Learn more</span>
 
                 <span className="transition-transform duration-300 group-hover:translate-x-1">
@@ -112,12 +118,15 @@ export default function Services() {
 
               {/* Hover line */}
               <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-blue-600 transition-[width] duration-300 group-hover:w-full" />
-            </a>
+
+            </Link>
           ))}
+
         </div>
 
         {/* Bottom CTA */}
         <div className="mt-10 flex flex-col items-start justify-between gap-5 rounded-2xl border border-slate-200 bg-slate-50 p-6 sm:flex-row sm:items-center">
+
           <div>
             <p className="font-semibold text-[#07152d]">
               Not sure which treatment you need?
@@ -138,8 +147,11 @@ export default function Services() {
               →
             </span>
           </a>
+
         </div>
+
       </div>
     </section>
   );
 }
+

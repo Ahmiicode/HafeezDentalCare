@@ -96,7 +96,7 @@ export default function Hero() {
 
             <div>
               <p className="text-2xl font-semibold tracking-tight text-[#081B4B]">
-                10+
+                100+
               </p>
               <p className="mt-1 text-xs uppercase tracking-[0.15em] text-slate-400">
                 Treatments
