@@ -2,13 +2,13 @@ import Image from "next/image";
 
 const cases = [
   {
-    image: "/images/image2.jpeg",
+    image: "/images/image2.jpg",
     title: "Professional Cleaning & Smile Improvement",
     description:
       "A noticeable improvement in dental cleanliness and overall smile appearance.",
   },
   {
-    image: "/images/image3.jpeg",
+    image: "/images/image3.jpg",
     title: "Dental Cleaning & Stain Removal",
     description:
       "A visible transformation following professional dental cleaning and care.",
