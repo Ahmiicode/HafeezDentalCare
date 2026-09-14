@@ -85,7 +85,7 @@ export default function Hero() {
           <div className="mt-12 flex flex-wrap items-center gap-x-9 gap-y-5 border-t border-slate-100 pt-7">
             <div>
               <p className="text-2xl font-semibold tracking-tight text-[#081B4B]">
-                500+
+                1000+
               </p>
               <p className="mt-1 text-xs uppercase tracking-[0.15em] text-slate-400">
                 Patients
@@ -96,7 +96,7 @@ export default function Hero() {
 
             <div>
               <p className="text-2xl font-semibold tracking-tight text-[#081B4B]">
-                100+
+                800+
               </p>
               <p className="mt-1 text-xs uppercase tracking-[0.15em] text-slate-400">
                 Treatments

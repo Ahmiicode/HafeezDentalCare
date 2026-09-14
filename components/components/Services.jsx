@@ -1,30 +1,56 @@
+"use client";
 
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 const services = [
   {
-    number: "01",
     title: "Dental Implants",
-    slug: "dental-implants",
-    text: "Natural-looking tooth replacement designed for strength, function, and confidence.",
+    description:
+      "A reliable solution for replacing missing teeth and restoring a natural-looking smile.",
+    href: "/services/dental-implants",
   },
   {
-    number: "02",
-    title: "Root Canal",
-    slug: "root-canal",
-    text: "Comfort-focused treatment to protect your natural tooth and restore its function.",
+    title: "Root Canal Treatment",
+    description:
+      "Professional treatment to help save damaged or infected teeth and protect your natural smile.",
+    href: "/services/root-canal",
   },
   {
-    number: "03",
     title: "Teeth Whitening",
-    slug: "teeth-whitening",
-    text: "Professional whitening care to help you achieve a brighter, cleaner-looking smile.",
+    description:
+      "Brighten your smile with professional teeth whitening designed for a cleaner, more confident look.",
+    href: "/services/teeth-whitening",
   },
   {
-    number: "04",
     title: "Dental Crowns",
-    slug: "dental-crowns",
-    text: "Strong, aesthetic crowns that help restore damaged or weakened teeth.",
+    description:
+      "Restore damaged or weakened teeth with durable dental crowns designed for function and appearance.",
+    href: "/services/dental-crowns",
+  },
+  {
+    title: "Orthodontics",
+    description:
+      "Improve tooth alignment and create a healthier, more balanced smile with orthodontic care.",
+    href: "/services/orthodontics",
+  },
+  {
+    title: "Clear Aligners",
+    description:
+      "Straighten your teeth with a discreet and comfortable alternative to traditional braces.",
+    href: "/services/aligners",
+  },
+  {
+    title: "Surgical Extraction",
+    description:
+      "Professional tooth extraction performed with careful planning and a focus on patient comfort.",
+    href: "/services/surgical-extraction",
+  },
+  {
+    title: "Dental Filling",
+    description:
+      "Repair cavities and damaged teeth with dental fillings that restore strength and function.",
+    href: "/services/dental-filling",
   },
 ];
 
@@ -32,126 +58,124 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="relative overflow-hidden bg-white py-28"
+      className="relative overflow-hidden bg-white py-24 md:py-32"
     >
-      {/* Background glow */}
-      <div className="pointer-events-none absolute right-[-160px] top-1/4 h-[360px] w-[360px] rounded-full bg-blue-500/[0.04] blur-[100px] lg:h-[450px] lg:w-[450px] lg:blur-[120px]" />
+      {/* Background Glow */}
+      <div className="absolute -left-40 top-1/4 h-[400px] w-[400px] rounded-full bg-blue-500/[0.06] blur-[120px]" />
 
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
+      <div className="absolute -right-40 bottom-0 h-[400px] w-[400px] rounded-full bg-cyan-400/[0.05] blur-[120px]" />
 
-        {/* Header */}
-        <div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
+      <div className="relative mx-auto max-w-7xl px-5 md:px-8">
+        {/* Heading */}
+        <div className="mx-auto mb-14 max-w-3xl text-center">
+          <motion.span
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-4 inline-block text-sm font-semibold uppercase tracking-[0.2em] text-blue-600"
+          >
+            Our Services
+          </motion.span>
 
-          <div className="max-w-2xl">
-            <p className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.25em] text-blue-600">
-              <span className="h-px w-8 bg-blue-600" />
-              Our Services
-            </p>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-3xl font-bold tracking-tight text-[#081B4B] md:text-5xl"
+          >
+            Complete dental care for{" "}
+            <span className="text-blue-600">your smile</span>
+          </motion.h2>
 
-            <h2 className="mt-6 text-4xl font-semibold leading-[1.08] tracking-[-0.035em] text-[#07152d] md:text-5xl lg:text-6xl">
-              Complete care for
-              <span className="mt-2 block bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
-                your smile.
-              </span>
-            </h2>
-          </div>
-
-          <p className="max-w-md text-[16px] leading-7 text-slate-600">
-            From preventive care to restorative and cosmetic treatments,
-            our dental services are designed around your comfort and
-            long-term oral health.
-          </p>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="mx-auto mt-5 max-w-2xl text-base leading-7 text-slate-600 md:text-lg"
+          >
+            From restorative treatments to cosmetic and preventive care,
+            Hafeez Dental Care provides professional dental solutions in
+            Rahim Yar Khan.
+          </motion.p>
         </div>
 
         {/* Services Grid */}
-        <div className="mt-14 grid overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-[0_15px_45px_rgba(15,23,42,0.04)] md:grid-cols-2">
-
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {services.map((service, index) => (
-            <Link
-              key={service.number}
-              href={`/services/${service.slug}`}
-              className={`group relative min-h-[260px] bg-white p-8 transition-colors duration-300 hover:bg-slate-50 md:min-h-[300px] ${
-                index < 2 ? "border-b border-slate-200" : ""
-              } ${
-                index % 2 === 0
-                  ? "md:border-r md:border-slate-200"
-                  : ""
-              }`}
+            <motion.div
+              key={service.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.5,
+                delay: index * 0.06,
+              }}
+              className="group"
             >
-
-              {/* Number + Arrow */}
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-semibold tracking-[0.2em] text-blue-600">
-                  {service.number}
-                </span>
-
-                <span className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white text-sm text-slate-400 transition-colors duration-300 group-hover:border-blue-200 group-hover:bg-blue-50 group-hover:text-blue-600">
-                  ↗
-                </span>
-              </div>
-
-              {/* Title */}
-              <h3 className="mt-10 text-2xl font-semibold tracking-tight text-[#07152d] transition-colors duration-300 group-hover:text-blue-600 sm:mt-12">
-                {service.title}
-              </h3>
-
-              {/* Description */}
-              <p className="mt-4 max-w-sm text-[15px] leading-7 text-slate-500">
-                {service.text}
-              </p>
-
-              {/* Learn More */}
-              <div
-                className="
-                  mt-6
-                  flex items-center gap-2
-                  text-sm font-medium text-blue-600
-                  md:absolute md:bottom-8 md:left-8 md:mt-0
-                "
+              <Link
+                href={service.href}
+                className="relative flex min-h-[260px] flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white p-7 shadow-[0_10px_40px_rgba(8,27,75,0.05)] transition-all duration-300 hover:-translate-y-2 hover:border-blue-200 hover:shadow-[0_20px_50px_rgba(33,71,255,0.12)]"
               >
-                <span>Learn more</span>
+                {/* Number */}
+                <div className="mb-7 flex items-center justify-between">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-blue-50 text-sm font-bold text-blue-600">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
 
-                <span className="transition-transform duration-300 group-hover:translate-x-1">
-                  →
-                </span>
-              </div>
+                  <span className="text-2xl text-blue-600/30 transition-all duration-300 group-hover:translate-x-1 group-hover:text-blue-600">
+                    →
+                  </span>
+                </div>
 
-              {/* Hover line */}
-              <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-blue-600 transition-[width] duration-300 group-hover:w-full" />
+                {/* Content */}
+                <div>
+                  <h3 className="text-xl font-bold text-[#081B4B]">
+                    {service.title}
+                  </h3>
 
-            </Link>
+                  <p className="mt-3 text-sm leading-6 text-slate-500">
+                    {service.description}
+                  </p>
+                </div>
+
+                {/* Learn More */}
+                <div className="mt-auto pt-7 text-sm font-semibold text-blue-600">
+                  Learn more
+                  <span className="ml-2 transition-transform duration-300 group-hover:translate-x-1">
+                    →
+                  </span>
+                </div>
+
+                {/* Hover Glow */}
+                <div className="pointer-events-none absolute -bottom-16 -right-16 h-32 w-32 rounded-full bg-blue-500/[0.07] blur-2xl transition-all duration-300 group-hover:bg-blue-500/[0.12]" />
+              </Link>
+            </motion.div>
           ))}
-
         </div>
 
         {/* Bottom CTA */}
-        <div className="mt-10 flex flex-col items-start justify-between gap-5 rounded-2xl border border-slate-200 bg-slate-50 p-6 sm:flex-row sm:items-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-14 text-center"
+        >
+          <p className="mb-5 text-sm text-slate-500">
+            Not sure which treatment is right for you?
+          </p>
 
-          <div>
-            <p className="font-semibold text-[#07152d]">
-              Not sure which treatment you need?
-            </p>
-
-            <p className="mt-1 text-sm text-slate-500">
-              Schedule a consultation and discuss your dental needs.
-            </p>
-          </div>
-
-          <a
-            href="#appointment"
-            className="group inline-flex shrink-0 items-center gap-3 rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white transition-colors duration-300 hover:bg-blue-700"
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-2 rounded-full bg-[#081B4B] px-7 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-600/20"
           >
-            Book Consultation
-
-            <span className="transition-transform duration-300 group-hover:translate-x-1">
-              →
-            </span>
-          </a>
-
-        </div>
-
+            Book a Consultation
+            <span>→</span>
+          </Link>
+        </motion.div>
       </div>
     </section>
   );
 }
-

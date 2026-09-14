@@ -1,4 +1,4 @@
-import Navbar from "@/components/components/Navbar";
+
 import Hero from "@/components/components/Hero";
 import TrustBar from "@/components/components/TrustBar";
 import AboutDoctor from "@/components/components/AboutDoctor";
@@ -13,7 +13,7 @@ import Map from "@/components/components/Map";
 export default function Home() {
   return (
     <main>
-      <Navbar />
+    
       <Hero />
       <TrustBar />
       <AboutDoctor />

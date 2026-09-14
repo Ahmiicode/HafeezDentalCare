@@ -8,7 +8,7 @@ export default function ResultsPage() {
     <main>
       <Navbar />
 
-      <div className="pt-24">
+      <div className="pt-24  bg-white">
         <BeforeAfter />
         <Appointment />
       </div>

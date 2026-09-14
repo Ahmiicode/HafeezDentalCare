@@ -8,7 +8,7 @@ export default function ServicesPage() {
     <main>
       <Navbar />
 
-      <div className="pt-24">
+      <div className="pt-24  bg-white">
         <Services />
         <Appointment />
       </div>

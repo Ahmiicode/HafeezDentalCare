@@ -7,9 +7,9 @@ import Footer from "@/components/components/Footer";
 export default function AboutPage() {
   return (
     <main>
-      <Navbar />
+     
 
-      <div className="pt-24">
+      <div className="pt-24 bg-white">
         <AboutDoctor />
         <Clinic />
         <WhyChooseUs />
