@@ -1,20 +1,3 @@
-import Image from "next/image";
-
-const cases = [
-  {
-    image: "/images/image2.jpg",
-    title: "Professional Cleaning & Smile Improvement",
-    description:
-      "A noticeable improvement in dental cleanliness and overall smile appearance.",
-  },
-  {
-    image: "/images/image3.jpg",
-    title: "Dental Cleaning & Stain Removal",
-    description:
-      "A visible transformation following professional dental cleaning and care.",
-  },
-];
-
 export default function BeforeAfter() {
   return (
     <section
@@ -30,7 +13,6 @@ export default function BeforeAfter() {
           <div>
             <div className="mb-5 flex items-center gap-3">
               <span className="h-px w-10 bg-blue-600" />
-
               <p className="text-xs font-semibold uppercase tracking-[0.3em] text-blue-600">
                 Patient Results
               </p>
@@ -49,70 +31,63 @@ export default function BeforeAfter() {
           </p>
         </div>
 
-        {/* Before / After Cases */}
-        <div className="mt-14 grid gap-8 lg:grid-cols-2">
-          {cases.map((item, index) => (
+        {/* Results Grid (no images, simple cards) */}
+        <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {[
+            {
+              title: "Professional Cleaning & Smile Improvement",
+              description:
+                "A noticeable improvement in dental cleanliness and overall smile appearance.",
+            },
+            {
+              title: "Dental Cleaning & Stain Removal",
+              description:
+                "A visible transformation following professional dental cleaning and care.",
+            },
+            {
+              title: "Healthy, Confident Smiles",
+              description:
+                "Consistent, high-quality dental care resulting in long-term oral health.",
+            },
+          ].map((item, index) => (
             <article
-              key={item.image}
-              className="group overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-[0_12px_40px_rgba(15,23,42,0.05)] transition-transform duration-300 hover:-translate-y-1"
+              key={item.title}
+              className="group rounded-[28px] border border-slate-200 bg-white p-8 shadow-[0_12px_40px_rgba(15,23,42,0.05)] transition-transform duration-300 hover:-translate-y-1"
             >
-              {/* Image */}
-              <div className="relative h-[320px] overflow-hidden bg-slate-100 sm:h-[360px] md:h-[400px]">
-                <Image
-                  src={item.image}
-                  alt={`${item.title} - Before and After`}
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover object-center transition-transform duration-500 group-hover:scale-[1.02]"
-                />
-
-                {/* Soft Image Overlay */}
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/15 via-transparent to-transparent" />
-
-                {/* Case Badge */}
-                <div className="absolute right-5 top-5 rounded-full border border-white/60 bg-white/90 px-4 py-2 text-[11px] font-semibold tracking-[0.2em] text-[#07152d] shadow-sm backdrop-blur-sm">
+              <div className="mb-6 flex items-center justify-between">
+                <div className="rounded-full border border-white/60 bg-blue-50 px-4 py-2 text-[11px] font-semibold tracking-[0.2em] text-blue-600">
                   CASE {String(index + 1).padStart(2, "0")}
+                </div>
+
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-blue-100 bg-blue-50 text-blue-600 transition-transform duration-300 group-hover:translate-x-1">
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.7"
+                    aria-hidden="true"
+                  >
+                    <path d="M5 12h14" />
+                    <path d="m13 6 6 6-6 6" />
+                  </svg>
                 </div>
               </div>
 
-              {/* Content */}
-              <div className="p-7 md:p-8">
-                <div className="flex items-start justify-between gap-5">
-                  <div>
-                    <h3 className="text-xl font-semibold leading-snug text-[#07152d] transition-colors duration-300 group-hover:text-blue-600 md:text-2xl">
-                      {item.title}
-                    </h3>
+              <h3 className="text-xl font-semibold leading-snug text-[#07152d] transition-colors duration-300 group-hover:text-blue-600 md:text-2xl">
+                {item.title}
+              </h3>
 
-                    <p className="mt-3 max-w-lg text-sm leading-6 text-slate-500">
-                      {item.description}
-                    </p>
-                  </div>
+              <p className="mt-3 max-w-lg text-sm leading-6 text-slate-500">
+                {item.description}
+              </p>
 
-                  {/* Arrow */}
-                  <div className="hidden h-11 w-11 shrink-0 items-center justify-center rounded-full border border-blue-100 bg-blue-50 text-blue-600 transition-transform duration-300 group-hover:translate-x-1 sm:flex">
-                    <svg
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1.7"
-                      aria-hidden="true"
-                    >
-                      <path d="M5 12h14" />
-                      <path d="m13 6 6 6-6 6" />
-                    </svg>
-                  </div>
-                </div>
-
-                {/* Bottom Label */}
-                <div className="mt-6 flex items-center gap-2 border-t border-slate-100 pt-5">
-                  <span className="h-1.5 w-1.5 rounded-full bg-blue-600" />
-
-                  <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-blue-600">
-                    Before & After Result
-                  </span>
-                </div>
+              <div className="mt-6 flex items-center gap-2 border-t border-slate-100 pt-5">
+                <span className="h-1.5 w-1.5 rounded-full bg-blue-600" />
+                <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-blue-600">
+                  Before & After Result
+                </span>
               </div>
             </article>
           ))}
